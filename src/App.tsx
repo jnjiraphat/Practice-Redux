@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as R from "ramda";
 
-function App() {
+import { getRootCheckState, getCheckState } from "module/check/selectors";
+import { checkNum } from "module/check/actions";
+
+const App = () => {
+  const dispatch = useDispatch();
+  const textNum = useSelector(R.compose(getCheckState, getRootCheckState));
+  // const [value, setValue] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{textNum}</h1>
+      <input
+        // type="text"
+        // value={value}
+        onChange={(e) => dispatch(checkNum(Number(e.target.value)))}
+      />
+      {/* <input type="submit" value="Submit" /> */}
     </div>
   );
-}
+};
 
 export default App;

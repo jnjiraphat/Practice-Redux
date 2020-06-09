@@ -1,6 +1,6 @@
-import { put, takeLeading } from "redux-saga";
+import { put, takeLeading } from "redux-saga/effects";
 
-import { ActionType } from "./types";
+import { ActionType } from "../types";
 import { actionTypes } from "./types";
 import { checkNum, checkNumSuccess, checkNumFailure } from "./actions";
 
@@ -18,7 +18,7 @@ function* checkNumTask(actions?: ActionType<typeof checkNum>) {
       yield put(checkNumSuccess(textNum));
     }
   } catch (error) {
-    yield put(checkNumFailure);
+    yield put(checkNumFailure(error));
   }
 }
 

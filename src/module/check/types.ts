@@ -1,4 +1,4 @@
-export const MODULE_NAME = "JENNY_MODULE";
+export const MODULE_NAME = "CHECK_MODULE";
 
 export const actionTypes = {
   CHECK_NUM: `${MODULE_NAME}/CHECK_NUM`,
